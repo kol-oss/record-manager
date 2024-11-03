@@ -1,6 +1,6 @@
 import uuid
 
-from src import Record
+from src.dto import Record
 
 class RecordRepository:
     __records = {}
@@ -8,8 +8,11 @@ class RecordRepository:
     def get(self, record_id: str) -> Record:
         return self.__records.get(record_id)
 
+    def get_all(self) -> list[Record]:
+        return list(self.__records.values())
+
     def find(self, user_id: str, category_id: str) -> Record | None:
-        for record in self.__records:
+        for record in self.__records.values():
             if (record.user_id == user_id) and (record.category_id == category_id):
                 return record
 
@@ -23,3 +26,9 @@ class RecordRepository:
         self.__records[record.record_id] = record
 
         return record
+
+    def delete(self, record_id: str) -> Record | None:
+        record = self.get(record_id)
+        if not record: return None
+
+        return self.__records.pop(record_id)

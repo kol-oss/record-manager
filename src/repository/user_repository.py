@@ -1,12 +1,15 @@
 import uuid
 
-from src import User
+from src.dto import User
 
 class UserRepository:
     __users = {}
 
     def get(self, user_id: str) -> User:
         return self.__users.get(user_id)
+
+    def get_all(self):
+        return self.__users.values()
 
     def get_or_create(self, user_id: str) -> User:
         user = self.get(user_id)
@@ -19,3 +22,9 @@ class UserRepository:
         self.__users[user.user_id] = user
 
         return user
+
+    def delete(self, user_id: str) -> User | None:
+        user = self.get(user_id)
+        if not user: return None
+
+        return self.__users.pop(user_id)

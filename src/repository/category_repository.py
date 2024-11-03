@@ -1,6 +1,6 @@
 import uuid
 
-from src import Category
+from src.dto import Category
 
 class CategoryRepository:
     __categories = {}
@@ -19,3 +19,9 @@ class CategoryRepository:
         self.__categories[category.category_id] = category
 
         return category
+
+    def delete(self, category_id: str) -> Category | None:
+        category = self.get(category_id)
+        if not category: return None
+
+        return self.__categories.pop(category_id)
