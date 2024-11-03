@@ -1,5 +1,4 @@
 from flask import request
-from flask_api import status
 
 from src import app
 from src.service import RecordService
@@ -31,19 +30,19 @@ def create_record():
     value = record_data['value']
 
     if user_id is None or user_id == "":
-        return "Record must contain user_id", status.HTTP_403_FORBIDDEN
+        return "Record must contain user_id", 403
 
     if category_id is None or category_id == "":
-        return "Record must contain category_id", status.HTTP_403_FORBIDDEN
+        return "Record must contain category_id", 403
 
     if value is None or value == "":
-        return "Record must contain value", status.HTTP_403_FORBIDDEN
+        return "Record must contain value", 403
 
     record = record_service.create_record(user_id, category_id, int(value))
 
-    if not record: return "Provided data is not valid", status.HTTP_403_FORBIDDEN
+    if not record: return "Provided data is not valid", 403
 
-    return record.__dict__, status.HTTP_201_CREATED
+    return record.__dict__, 201
 
 @app.route(RECORD_ROUTE + '/<record_id>', methods = ['DELETE'])
 def delete_record(record_id):
