@@ -1,3 +1,3 @@
-from .UserDTO import User
-from .CategoryDTO import Category
-from .RecordDTO import Record
+from .user import User
+from .category import Category
+from .record import Record
