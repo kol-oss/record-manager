@@ -1,5 +1,5 @@
 from src.dto import Record
-from src.repository import RecordRepository
+from src.repository import RecordRepository, UserRepository, CategoryRepository
 
 class RecordService:
     __user_repository = None
@@ -8,8 +8,8 @@ class RecordService:
 
     def __init__(
             self,
-            user_repository: RecordRepository,
-            category_repository: RecordRepository,
+            user_repository: UserRepository,
+            category_repository: CategoryRepository,
             record_repository: RecordRepository
     ):
         self.__user_repository = user_repository

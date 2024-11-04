@@ -16,7 +16,7 @@ def get_category(category_id):
 def create_category():
     category_data = request.get_json()
     name = category_data['name']
-    if name is None or name == "": return {"message": "Please provide a name"}
+    if name is None or name == "": return "Category must contain a name", 403
 
     return category_service.create_category(name).__dict__
 
@@ -24,6 +24,6 @@ def create_category():
 def delete_category(category_id):
     deleted_category = category_service.delete_category(category_id)
 
-    if deleted_category is None: return None
+    if deleted_category is None: return {}, 204
 
     return deleted_category.__dict__

@@ -22,7 +22,7 @@ def get_user(user_id):
 def create_user():
     user_data = request.get_json()
     name = user_data['name']
-    if name is None or name == "": return {"message": "Please provide a name"}
+    if name is None or name == "": return "User must contain a name", 403
 
     return user_service.create_user(name).__dict__
 
@@ -30,6 +30,6 @@ def create_user():
 def delete_user(user_id):
     deleted_user = user_service.delete_user(user_id)
 
-    if deleted_user is None: return None
+    if deleted_user is None: return {}, 204
 
     return deleted_user.__dict__

@@ -48,6 +48,6 @@ def create_record():
 def delete_record(record_id):
     deleted_record = record_service.delete_record(record_id)
 
-    if deleted_record is None: return None
+    if deleted_record is None: return {}, 204
 
     return deleted_record.__dict__
