@@ -9,6 +9,6 @@ RUN python -m pip install -r requirements.txt
 
 COPY . /app
 
-EXPOSE 10000
+EXPOSE 8080
 
 CMD flask --app src run -h 0.0.0.0 -p $PORT
