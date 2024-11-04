@@ -10,13 +10,19 @@ from src.datasource import record_repository
 RECORD_ROUTE = '/record'
 record_service = RecordService(user_repository, category_repository, record_repository)
 
+@app.route(RECORD_ROUTE + 's', methods = ['GET'])
+def get_all_record():
+    return {"records": [record.__dict__ for record in record_service.get_all()]}
+
 @app.route(RECORD_ROUTE, methods = ['GET'])
-def get_records():
+def get_filtered_records():
     user_id = request.args.get('user_id')
     category_id = request.args.get('category_id')
-    records = record_service.get_all_records(user_id, category_id)
+    records = record_service.filter(user_id, category_id)
 
-    return {"records": [record.__dict__ for record in records]}
+    if not records: return "user_id or category_id must be specified", 403
+
+    return {"records": [record.__dict__ for record in records]}, 200
 
 @app.route(RECORD_ROUTE + '/<record_id>', methods = ['GET'])
 def get_record(record_id):

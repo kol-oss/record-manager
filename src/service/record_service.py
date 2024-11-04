@@ -21,8 +21,13 @@ class RecordService:
 
         return self.__record_repository.get(record_id)
 
-    def get_all_records(self, user_id = None, category_id = None) -> list[Record]:
+    def get_all(self) -> list[Record]:
+        return self.__record_repository.get_all()
+
+    def filter(self, user_id = None, category_id = None) -> list[Record] | None:
         filtered = []
+
+        if user_id is None and category_id is None: return None
 
         for record in self.__record_repository.get_all():
             if user_id is not None and record.user_id != user_id:
