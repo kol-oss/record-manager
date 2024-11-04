@@ -17,5 +17,5 @@ class CategoryService:
 
         return self.__category_repository.get_or_create(name)
 
-    def delete_category(self, category_id: str) -> None:
+    def delete_category(self, category_id: str) -> Category | None:
         return self.__category_repository.delete(category_id)

@@ -28,4 +28,8 @@ def create_user():
 
 @app.route(USER_ROUTE + '/<user_id>', methods = ['DELETE'])
 def delete_user(user_id):
-    return user_service.delete_user(user_id).__dict__
+    deleted_user = user_service.delete_user(user_id)
+
+    if deleted_user is None: return None
+
+    return deleted_user.__dict__

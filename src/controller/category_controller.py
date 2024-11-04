@@ -22,4 +22,8 @@ def create_category():
 
 @app.route(CATEGORY_ROUTE + '/<category_id>', methods = ['DELETE'])
 def delete_category(category_id):
-    return category_service.delete_category(category_id).__dict__
+    deleted_category = category_service.delete_category(category_id)
+
+    if deleted_category is None: return None
+
+    return deleted_category.__dict__

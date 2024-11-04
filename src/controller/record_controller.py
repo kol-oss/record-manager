@@ -46,4 +46,8 @@ def create_record():
 
 @app.route(RECORD_ROUTE + '/<record_id>', methods = ['DELETE'])
 def delete_record(record_id):
-    return record_service.delete_record(record_id).__dict__
+    deleted_record = record_service.delete_record(record_id)
+
+    if deleted_record is None: return None
+
+    return deleted_record.__dict__

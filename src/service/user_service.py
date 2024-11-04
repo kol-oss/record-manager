@@ -20,5 +20,5 @@ class UserService:
 
         return self.__user_repository.get_or_create(name)
 
-    def delete_user(self, user_id: str) -> None:
+    def delete_user(self, user_id: str) -> User | None:
         return self.__user_repository.delete(user_id)

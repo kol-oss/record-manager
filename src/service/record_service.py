@@ -43,5 +43,5 @@ class RecordService:
 
         return self.__record_repository.create(user_id, category_id, value)
 
-    def delete_record(self, record_id: str) -> Record:
+    def delete_record(self, record_id: str) -> Record | None:
         return self.__record_repository.delete(record_id)
