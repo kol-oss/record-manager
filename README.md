@@ -50,6 +50,5 @@ docker-compose up
 You can also check the current version of repository on the remote deployed page via https://healthcheck-8g8l.onrender.com/.
 
 If you want to test it, you can work with Postman via:
-* [Workspace](https://web.postman.co/workspace/My-Workspace~c61d5642-b08b-4050-8c08-a49e84c2fa60/flow/6727a5fcad03151df9e0ae93)
-* [Workflow](https://web.postman.co/workspace/c61d5642-b08b-4050-8c08-a49e84c2fa60/flow/6727a5fcad03151df9e0ae93)
+* [Workflow](https://www.postman.com/evanphilips/workspace/my-workspace/flow/6727a5fcad03151df9e0ae93)
 
